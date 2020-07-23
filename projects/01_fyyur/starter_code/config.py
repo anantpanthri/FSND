@@ -8,6 +8,6 @@ DEBUG = True
 
 # Connect to the database
 
-
+print('inside DB')
 # TODO IMPLEMENT DATABASE URL
-SQLALCHEMY_DATABASE_URI = '<Put your local database url>'
+SQLALCHEMY_DATABASE_URI = 'postgresql://anantpanthri@localhost:5432/musicapp'

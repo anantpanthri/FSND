@@ -284,7 +284,7 @@ def create_venue_form():
 @app.route('/venues/create', methods=['POST'])
 def create_venue_submission():
     venue_form=VenueForm(request.form)
-    flashType='danger'
+    flashType='not success'
     try:
         newVenue = Venue(
         name = request.form['name'],

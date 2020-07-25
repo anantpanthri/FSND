@@ -56,10 +56,11 @@
               {% if (request.endpoint == 'venues') or
                 (request.endpoint == 'search_venues') or
                 (request.endpoint == 'show_venue') %}
-              <form class="search" method="post" action="/venues/search">
+              <form id="search_form" class="search" method="post" action="/venues/search">
                 <input class="form-control"
                   type="search"
                   name="search_term"
+                  id="search_venue"
                   placeholder="Find a venue"
                   aria-label="Search">
               </form>
@@ -112,6 +113,7 @@
       {% block footer %}{% endblock %}
     </div>
   </div>
+
 
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script type="text/javascript" src="/static/js/libs/jquery-1.11.1.min.js"><\/script>')</script>

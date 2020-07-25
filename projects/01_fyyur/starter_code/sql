@@ -1,0 +1,70 @@
+FLASK_APP=app.py FLASK_DEBUG=true flask run
+#############NOTES#################
+class Shows(db.Model):
+    __tablename__ = 'shows'
+    id = Column(Integer, primary_key=True)
+    artist_id = Column(Integer,ForeignKey('Artist.id'), nullable=False)
+    venue_id = Column(Integer,ForeignKey('Venue.id'), nullable=False)
+    start_time = Column('start_time', db.DateTime)
+
+----below works too----
+
+Shows = db.Table('shows', db.Model.metadata,
+    db.Column('Venue_id', db.Integer, db.ForeignKey('Venue.id')),
+    db.Column('Artist_id', db.Integer, db.ForeignKey('Artist.id')),
+    db.Column('start_time', db.DateTime)
+)
+
+
+---Venues----
+
+insert into "Venue" values (3,'Park Square Live Music & Coffee','San Francisco','CA','34 Whiskey Moore Ave','415-000-1234','https://www.parksquarelivemusicandcoffee.com',
+'https://www.facebook.com/ParkSquareLiveMusicAndCoffee', '{"Rock n Roll", "Jazz", "Classical", "Folk"}','',False
+);
+
+insert into "Venue" values (2,'The Dueling Pianos Bar','New York','NY','335 Delancey Street','914-003-1132','https://www.theduelingpianos.com',
+'https://www.facebook.com/theduelingpianos','{"Classical", "R&B", "Hip-Hop"}','',False);
+
+insert into "Venue" values (1,'The Musical Hop','San Francisco','CA','1015 Folsom Street','123-123-1234','https://www.themusicalhop.com',
+'https://www.facebook.com/TheMusicalHop','{"Jazz", "Reggae", "Swing", "Classical", "Folk"}','We are seeking talent',True);
+
+
+----Artist-----
+ id | name | city | state | phone | genres | image_link | facebook_link | seeking_description | seeking_venue
+insert into "Artist" values
+(4, 'Guns N Petals','San Francisco','CA','326-123-5000','{"Rock n Roll"}',
+'https://images.unsplash.com/photo-1549213783-8284d0336c4f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+'https://www.facebook.com/GunsNPetals',
+'Looking for shows to perform at in the San Francisco Bay Area!',
+True);
+----Artist-----
+ id | name | city | state | phone | genres | image_link | facebook_link | seeking_description | seeking_venue
+
+insert into "Artist" values
+(5,  'Matt Quevedo','New York','NY','300-400-5000','{"Jazz"}',
+'https://images.unsplash.com/photo-1495223153807-b916f75de8c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
+'https://www.facebook.com/mattquevedo923251523',
+'',False);
+
+----Artist-----
+ id | name | city | state | phone | genres | image_link | facebook_link | seeking_description | seeking_venue
+
+insert into "Artist" values (6,  'The Wild Sax Band','San Francisco','CA','432-325-5432',
+'{"Jazz", "Classical"}',
+'https://images.unsplash.com/photo-1558369981-f9ca78462e61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=794&q=80',
+'','',False);
+
+
+--Shows--
+ id | artist_id | venue_id
+insert into shows values(1,4,1);
+insert into shows values(2,5,3);
+insert into shows values(3,6,3);
+insert into shows values(4,6,3);
+insert into shows values(5,6,3);
+
+update shows set start_time= timestamp '2019-05-21 21:30:00' where venue_id=1 and artist_id=4;
+update shows set start_time= timestamp '2019-06-15 23:00:00' where venue_id=3 and artist_id=5;
+update shows set start_time= timestamp '2035-04-01 20:00:00' where id=3;
+update shows set start_time= timestamp '2035-04-08 20:00:00' where id=4;
+update shows set start_time= timestamp '2035-04-15 20:00:00' where id=5;

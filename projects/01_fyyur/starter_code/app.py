@@ -1,20 +1,17 @@
 # ----------------------------------------------------------------------------#
 # Imports
 # ----------------------------------------------------------------------------#
-from logging import Formatter, FileHandler
 from datetime import datetime
+from logging import Formatter, FileHandler
 from babel import dates
 from dateutil import parser
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, logging
+from flask import Flask, render_template, request, redirect, url_for, flash, logging
+from flask_migrate import Migrate
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
-import sys
-from flask_migrate import Migrate
-
-# ----------------------------------------------------------------------------#
-# App Config.
-# ----------------------------------------------------------------------------#
 from sqlalchemy import inspect, func, Column, Integer, ForeignKey
+from forms import *
+
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -286,15 +283,29 @@ def create_venue_form():
 
 @app.route('/venues/create', methods=['POST'])
 def create_venue_submission():
-    # TODO: insert form data as a new Venue record in the db, instead
-    # TODO: modify data to be the data object returned from db insertion
-
-    # on successful db insert, flash success
-    flash('Venue ' + request.form['name'] + ' was successfully listed!')
-    # TODO: on unsuccessful db insert, flash an error instead.
-    # e.g., flash('An error occurred. Venue ' + data.name + ' could not be listed.')
-    # see: http://flask.pocoo.org/docs/1.0/patterns/flashing/
-    return render_template('pages/home.html')
+    venue_form=VenueForm(request.form)
+    flashType='danger'
+    try:
+        newVenue = Venue(
+        name = request.form['name'],
+        city = request.form['city'],
+        state = request.form['state'],
+        address = request.form['address'],
+        phone = request.form['phone'],
+        genres = request.form.getlist('genres'),
+        facebook_link = request.form['facebook_link']
+        )
+        db.session.add(newVenue)
+        db.session.commit()
+        flashType='success'
+        flash('Venue ' + request.form['name'] + ' was successfully listed!')
+    except:
+        flash(venue_form.error)
+        error="Failed!!!"
+        flash('Sorry Venue ' + request.form['name'] + ' was not successfully listed!')
+    finally:
+        db.session.close()
+    return render_template('pages/home.html',flashType=flashType)
 
 
 @app.route('/venues/<venue_id>', methods=['DELETE'])

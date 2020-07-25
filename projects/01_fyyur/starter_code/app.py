@@ -150,6 +150,7 @@ def show_venue(venue_id):
     # shows the venue page with the given venue_id
     # TODO: replace with real venue data from the venues table, using venue_id
 
+
     ''' data1 = {
         "id": 1,
         "name": "The Musical Hop",

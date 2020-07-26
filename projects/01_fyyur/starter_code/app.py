@@ -262,7 +262,6 @@ def show_venue(venue_id):
     .filter(Shows.venue_id == venue_id)
     .filter(Shows.start_time > datetime.now())
     .all())[0][0]
-
     return render_template('pages/show_venue.html', venue=single_venue)
 
 

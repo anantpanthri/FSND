@@ -1,0 +1,3 @@
+alias start='pg_ctl -D /usr/local/var/postgres start'  
+alias stop='pg_ctl -D /usr/local/var/postgres stop'
+

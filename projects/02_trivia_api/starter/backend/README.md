@@ -1,4 +1,4 @@
-# Full Stack Trivia API Backend
+psql # Full Stack Trivia API Backend
 
 ## Getting Started
 

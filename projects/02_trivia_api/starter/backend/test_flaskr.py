@@ -80,16 +80,27 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['deleted_question_id'], question_id)
 
     def test_create_search_question(self):
+        """TESTS SEARCH QUESTIONS"""
         json_search_term = {
-            'searchTerm' : 'dummy',
+            'searchTerm': 'dummy',
         }
-        res = self.client().post('/questions', json = json_search_term)
+        res = self.client().post('/questions', json=json_search_term)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
         self.assertTrue(len(data['questions']) > 0)
         self.assertTrue(data['total_questions'] > 0)
 
+    def test_get_questions_from_categories(self):
+        """TESTS QUESTIONS From categories"""
+        category_id = 1
+        res = self.client().get('/categories/{}/questions'.format(category_id))
+        data = json.loads(res.data)
+        print(data)
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(data['success'])
+        self.assertTrue(len(data['questions']) > 0)
+        self.assertTrue(data['total_questions'] > 0)
 
 
 # Make the tests conveniently executable

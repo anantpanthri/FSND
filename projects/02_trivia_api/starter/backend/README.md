@@ -244,12 +244,13 @@ Response
 
 #### 5 Get questions based on categories  /categories/<string:category_id>/questions
 Gets the question based on the categories
-Method GET 
+Method GET ```curl -X GET  http://127.0.0.1:5000/categories/2/questions```
+
 Request param string:category_id
     category_id can be [1,2,3,4,5]
 
 ```
-curl -X GET  http://127.0.0.1:5000/categories/2/questions
+Response example
 {
   "current_category": "2", 
   "questions": [

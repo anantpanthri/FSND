@@ -121,6 +121,7 @@ def create_app(test_config=None):
     @app.route('/questions', methods=['POST'])
     def create_search_question():
         body = request.get_json()
+        print(body)
         if not body:
             abort(404)
         search_term = body.get('searchTerm', None)

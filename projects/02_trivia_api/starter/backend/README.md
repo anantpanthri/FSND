@@ -243,8 +243,35 @@ Response
 ```
 
 #### 5 Get questions based on categories  /categories/<string:category_id>/questions
+Gets the question based on the categories
+Method GET 
+Request param string:category_id
+    category_id can be [1,2,3,4,5]
+
+```
+curl -X GET  http://127.0.0.1:5000/categories/2/questions
+{
+  "current_category": "2", 
+  "questions": [
+    {
+      "answer": "Escher", 
+      "category": 2, 
+      "difficulty": 1, 
+      "id": 16, 
+      "question": "Which Dutch graphic artist\u2013initials M C was a creator of optical illusions?"
+    }, 
+    {
+      "answer": "Mona Lisa", 
+      "category": 2, 
+      "difficulty": 3, 
+      "id": 17, 
+      "question": "La Giaconda is better known as what?"
+    }, 
+    {...}
+}
 
 
+```
 
 
 

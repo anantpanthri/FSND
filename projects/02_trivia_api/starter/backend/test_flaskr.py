@@ -96,12 +96,39 @@ class TriviaTestCase(unittest.TestCase):
         category_id = 1
         res = self.client().get('/categories/{}/questions'.format(category_id))
         data = json.loads(res.data)
-        print(data)
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
         self.assertTrue(len(data['questions']) > 0)
         self.assertTrue(data['total_questions'] > 0)
 
+    def test_play_quiz_with_category(self):
+        json_play_quizz = {
+            'previous_questions' : [2, 3],
+            'quiz_category' : {
+                'type' : 'Science',
+                'id' : '1'
+                }
+        }
+        res = self.client().post('/quizzes', json = json_play_quizz)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(data['success'])
+        self.assertTrue(data['question']['question'])
+        self.assertTrue(data['question']['id'] not in json_play_quizz['previous_questions'])
+
+    def test_play_quiz_without_category(self):
+        json_play_quizz = {
+            'previous_questions' : [1, 2, 5]
+        }
+        res = self.client().post('/quizzes', json = json_play_quizz)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(data['success'])
+        self.assertTrue(data['question']['question'])
+        # Also check if returned question is NOT in previous question
+        self.assertTrue(data['question']['id'] not in json_play_quizz['previous_questions'])
 
 # Make the tests conveniently executable
 if __name__ == "__main__":

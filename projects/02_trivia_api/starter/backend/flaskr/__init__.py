@@ -40,10 +40,10 @@ def create_app(test_config=None):
         categories = Category.query.all()
         if not categories:
             abort(404)
-        print([category.format() for category in categories])
+        print()
         return jsonify({
             'success': True,
-            'categories': [category.format() for category in categories]
+            'categories': [category.type.format() for category in categories]
         })
 
     def paginate(request, selection):
@@ -68,13 +68,14 @@ def create_app(test_config=None):
         paginated_questions = paginate(request, question_query)
         if len(paginated_questions) == 0:
             abort(404)
-        categories = Category.query.all()
+        categories_query_all = Category.query.all()
         return jsonify({
             'success': True,
             'questions': paginated_questions,
             'total_questions': len(question_query),
-            'categories': [category.format() for category in categories],
-            'current_category': 1  # should be taken from session or request form
+            'categories': [category.type.format() for category in categories_query_all],
+            'current_category': [category.type.format() for category in categories_query_all]
+
         })
 
     '''
@@ -94,7 +95,7 @@ def create_app(test_config=None):
 
     @app.route('/questions/<int:question_id>', methods=['DELETE'])
     def delete_question(question_id):
-        question = Question.query.filter(Question.id == question_id)
+        question = Question.query.filter(Question.id == question_id).one_or_none()
         if not question:
             abort(404)
         try:
@@ -107,7 +108,7 @@ def create_app(test_config=None):
             abort(404)
 
     '''
-      @TODO: 
+      @TODO DONE: 
       Create an endpoint to POST a new question, 
       which will require the question and answer text, 
       category, and difficulty score.
@@ -133,14 +134,13 @@ def create_app(test_config=None):
                 'success': True,
                 'questions': [question.format() for question in questions],
                 'total_questions': len(query_question),
-                'current_category': [category.format() for category in categories]
+                'current_category': [question.category for question in questions]
             })
 
         question = body.get('question', None)
         answer = body.get('answer', None)
         category = body.get('category', None)
         difficulty = body.get('difficulty', None)
-
         if not question or not answer or not category or not difficulty:
             abort(404)
         try:
@@ -189,7 +189,6 @@ def create_app(test_config=None):
                           .filter(Question.category == str(category_id))
                           .order_by(Question.id)
                           .all())
-        print(question_query)
         if not question_query:
             abort(400)
         paginate_ques = paginate(request, question_query)
@@ -204,16 +203,49 @@ def create_app(test_config=None):
         })
 
     '''
-  @TODO: 
-  Create a POST endpoint to get questions to play the quiz. 
-  This endpoint should take category and previous question parameters 
-  and return a random questions within the given category, 
-  if provided, and that is not one of the previous questions. 
+      @TODO DONE: 
+      Create a POST endpoint to get questions to play the quiz. 
+      This endpoint should take category and previous question parameters 
+      and return a random questions within the given category, 
+      if provided, and that is not one of the previous questions. 
+    
+      TEST: In the "Play" tab, after a user selects "All" or a category,
+      one question at a time is displayed, the user is allowed to answer
+      and shown whether they were correct or not. 
+    '''
 
-  TEST: In the "Play" tab, after a user selects "All" or a category,
-  one question at a time is displayed, the user is allowed to answer
-  and shown whether they were correct or not. 
-  '''
+    @app.route('/quizzes', methods=['POST'])
+    def play_quiz():
+        body = request.get_json()
+        if not body:
+            abort(400)
+        previous_question = body.get('previous_questions', None)
+        current_category = body.get('quiz_category', None)
+
+        if not previous_question:
+            if current_category:
+                questions_query = (Question.query
+                                   .filter(Question.category == str(current_category['id']))
+                                   .all())
+            else:
+                questions_query = (Question.query.all())
+        else:
+            if current_category:
+                questions_query = (Question.query
+                                   .filter(Question.category == str(current_category['id']))
+                                   .filter(Question.id.notin_(previous_question))
+                                   .all())
+            else:
+                questions_query = (Question.query
+                                   .filter(Question.id.notin_(previous_question))
+                                   .all())
+        questions_formatted = [question.format() for question in questions_query]
+        random_question = questions_formatted[random.randint(0, len(questions_formatted))]
+
+        return jsonify({
+            'success': True,
+            'question': random_question
+        })
 
     '''
   @TODO DONE: 

@@ -85,12 +85,12 @@ One note before you delve into your tasks: for each endpoint you are expected to
 8. Create a POST endpoint to get questions to play the quiz. This endpoint should take category and previous question parameters and return a random questions within the given category, if provided, and that is not one of the previous questions. 
 9. Create error handlers for all expected errors including 400, 404, 422 and 500. 
 
-##API endpoints 
+## API endpoints 
 Base URL ```http://127.0.0.1:5000/```
 
 
 
-####1. GET '/categories'
+#### 1. GET '/categories'
 ``http://127.0.0.1:5000/categories``
 ```
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
@@ -112,7 +112,7 @@ Example Response
 }
 ```
 
-####2. GET '/questions'
+#### 2. GET '/questions'
 ```
 http://127.0.0.1:5000/questions?page=1
 ```
@@ -169,7 +169,7 @@ Example response
   "total_questions": 27
 }
 ```
-####Errors
+#### Errors
 
 ```http://127.0.0.1:5000/questions?page=1343```
 
@@ -181,7 +181,7 @@ Example response
 }
 ```
 
-####3. DELETE '/questions/<int:question_id>'
+#### 3. DELETE '/questions/<int:question_id>'
 
 ``curl -X DELETE http://127.0.0.1:5000/questions/2``
 Deletes the question 
@@ -199,7 +199,7 @@ Response
   "success": true
 }
 ```
-####Errors
+#### Errors
 ```
 curl -X DELETE http://127.0.0.1:5000/questions/4
 {
@@ -210,7 +210,7 @@ curl -X DELETE http://127.0.0.1:5000/questions/4
 
 ```
 
-####4 search or create questions '/questions'
+#### 4 search or create questions '/questions'
 searches the question if the question is not in the database adds it.
 This endpoint will search based on the pattern so if matches partially or completely returns the result
 Method:POST
@@ -259,7 +259,7 @@ Response
 "POST /questions HTTP/1.1" 200 
 ```
 
-####5 Get questions based on categories  /categories/<string:category_id>/questions
+#### 5 Get questions based on categories  /categories/<string:category_id>/questions
 
 
 ## Testing

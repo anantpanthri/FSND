@@ -40,7 +40,6 @@ def create_app(test_config=None):
         categories = Category.query.all()
         if not categories:
             abort(404)
-        print()
         return jsonify({
             'success': True,
             'categories': [category.type.format() for category in categories]
@@ -121,7 +120,6 @@ def create_app(test_config=None):
     @app.route('/questions', methods=['POST'])
     def create_search_question():
         body = request.get_json()
-        print(body)
         if not body:
             abort(404)
         search_term = body.get('searchTerm', None)

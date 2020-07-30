@@ -292,9 +292,6 @@ Sample Response
   "success": true
 }
 
-
-
-
 ```
 
 ## Testing
@@ -305,4 +302,17 @@ createdb trivia_test
 psql trivia_test < trivia.psql
 python test_flaskr.py
 ```
+The test cases are located in test_flaskr.py
+```
 
+Launching unittests with arguments python -m unittest /Users/anantpanthri/PycharmProjects/FSND/projects/02_trivia_api/starter/backend/test_flaskr.py in /Users/anantpanthri/PycharmProjects/FSND/projects/02_trivia_api/starter/backend
+
+Process finished with exit code 0
+/Users/anantpanthri/workspace_Python/venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py:253: SADeprecationWarning: The 'postgres' dialect name has been renamed to 'postgresql'
+  loader = self.auto_fn(name)
+
+Ran 8 tests in 0.333s
+OK
+
+
+```

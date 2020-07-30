@@ -81,7 +81,7 @@ Base URL ```http://127.0.0.1:5000/```
 - Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs. 
 
 ```
-Example Response
+Sample Response
 {
   "categories": [
     "Science", 
@@ -113,7 +113,7 @@ http://127.0.0.1:5000/questions?page=1
 
 
 ```
-Example response
+Sample response
 {
   "categories": [
     "Science", 
@@ -199,7 +199,7 @@ This endpoint will search based on the pattern so if matches partially or comple
 Method:POST
 Request param:if search json body
  ````
-Request Example
+Request Sample
 {'searchTerm': 'discovered'}
    
  ````
@@ -207,7 +207,7 @@ Response:
     current_category: category the question belongs
     questions: question object
 ```
-Response Example
+Response Sample
 {
   "current_category": [
     1
@@ -250,7 +250,7 @@ Request param string:category_id
     category_id can be [1,2,3,4,5]
 
 ```
-Response example
+Response Sample
 {
   "current_category": "2", 
   "questions": [
@@ -271,10 +271,31 @@ Response example
     {...}
 }
 
+```
+#### 6 Play Quiz  /quizzes
+Gets the question based on the categories
+Method POST 
+Request param 
+``curl -X POST http://127.0.0.1:5000/quizzes -d '{"previous_questions" : [1, 2, 5], "quiz_category" : {"type" : "Science", "id" : "1"}} ' -H 'Content-Type: application/json'``
+
 
 ```
+Sample Response
+{
+  "question": {
+    "answer": "The Palace of Versailles", 
+    "category": 3, 
+    "difficulty": 3, 
+    "id": 14, 
+    "question": "In which royal palace would you find the Hall of Mirrors?"
+  }, 
+  "success": true
+}
 
 
+
+
+```
 
 ## Testing
 To run the tests, run

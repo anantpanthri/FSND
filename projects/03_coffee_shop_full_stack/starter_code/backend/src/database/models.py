@@ -13,11 +13,14 @@ db = SQLAlchemy()
 setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
+
+
 def setup_db(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
+
 
 '''
 db_drop_and_create_all()
@@ -25,29 +28,126 @@ db_drop_and_create_all()
     can be used to initialize a clean database
     !!NOTE you can change the database_filename variable to have multiple verisons of a database
 '''
+
+
+def db_test_drinks():
+    drink1=(Drink(
+        id=1,
+        title='SenchaTea',
+        recipe= """[
+            {
+            "color": "seagreen",
+             "name":"sencha",
+             "parts":4
+             },
+             {
+            "color": "black",
+             "name":"Pepper",
+             "parts":1
+             },
+            {
+            "color": "grey",
+             "name":"milk",
+             "parts":2
+             }
+                 ]"""
+    ))
+
+    drink3=(Drink(
+        id=3,
+        title='Madrisa',
+        recipe= """[
+            {
+            "color": "SkyBlue",
+             "name":"Vodka",
+             "parts":2
+             },
+             {
+            "color": "black",
+             "name":"Pepper",
+             "parts":1
+             },
+            {
+            "color": "Orange",
+             "name":"OrangeJuice",
+             "parts":2
+             }
+                 ]"""
+    ))
+
+    drink2=(Drink(
+        id=2,
+        title='Michelada',
+        recipe= """[
+            {
+            "color": "Orange",
+             "name":"Beer",
+             "parts":4
+             },
+             {
+            "color": "black",
+             "name":"Pepper",
+             "parts":1
+             },
+            {
+            "color": "red",
+             "name":"Worchestersauce",
+             "parts":2
+             }
+                 ]"""
+    ))
+    drink4=(Drink(
+        id=4,
+        title='MasalaTea',
+        recipe= """[
+            {
+            "color": "gold",
+             "name":"masala",
+             "parts":4
+             },
+             {
+            "color": "black",
+             "name":"Pepper",
+             "parts":2
+             },
+            {
+            "color": "grey",
+             "name":"milk",
+             "parts":1
+             }
+                 ]"""
+    ))
+    drink1.insert()
+    drink2.insert()
+    drink3.insert()
+    drink4.insert()
+
+
 def db_drop_and_create_all():
     db.drop_all()
     db.create_all()
+    db_test_drinks()
 
 '''
 Drink
 a persistent drink entity, extends the base SQLAlchemy Model
 '''
+
+
 class Drink(db.Model):
     # Autoincrementing, unique primary key
     id = Column(Integer().with_variant(Integer, "sqlite"), primary_key=True)
-    # String Title
     title = Column(String(80), unique=True)
     # the ingredients blob - this stores a lazy json blob
     # the required datatype is [{'color': string, 'name':string, 'parts':number}]
-    recipe =  Column(String(180), nullable=False)
+    recipe = Column(String(180), nullable=False)
 
     '''
     short()
         short form representation of the Drink model
     '''
     def short(self):
-        print(json.loads(self.recipe))
+        print(self.recipe)
         short_recipe = [{'color': r['color'], 'parts': r['parts']} for r in json.loads(self.recipe)]
         return {
             'id': self.id,
@@ -60,11 +160,18 @@ class Drink(db.Model):
         long form representation of the Drink model
     '''
     def long(self):
-        return {
-            'id': self.id,
-            'title': self.title,
-            'recipe': json.loads(self.recipe)
-        }
+        try:
+            return {
+                'id': self.id,
+                'title': self.title,
+                'recipe': json.loads(self.recipe)
+            }
+        except:
+            return {
+                'id': self.id,
+                'title': self.title,
+                'recipe': self.recipe
+            }
 
     '''
     insert()

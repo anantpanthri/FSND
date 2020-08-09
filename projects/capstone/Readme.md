@@ -1,36 +1,25 @@
 ## Content
 
-
-1. [Start Project locally](#start-locally)
-2. [API Documentation](#api)
-3. [Authentification](#authentification)
+1. [Motivation](#motivation)
+2. [Local Setup](#local_setup)
+3. [API endpoints](#api)
 4. [Authentification](#authentification)
-5. [Authentification](#authentification)
-6. [Authentification](#authentification)
-7. [Authentification](#authentification)
-8. [Authentification](#authentification)
-9. [Authentification](#authentification)
-10. [Authentification](#authentification)
-11. [Authentification](#authentification)
-12. [Authentification](#authentification)
-13. [Authentification](#authentification)
-14. [Authentification](#authentification)
-15. [Authentification](#authentification)
-16. [Authentification](#authentification)
-17. [Authentification](#authentification)
-18. [Authentification](#authentification)
-19. [Authentification](#authentification)
-20. [Authentification](#authentification)
-21. [Authentification](#authentification)
-22. [Authentification](#authentification)
-23. [Authentification](#authentification)
-24. [Authentification](#authentification)
-25. [Authentification](#authentification)
-26. [Authentification](#authentification)
-27. [Authentification](#authentification)
-28. [Authentification](#authentification)
+5. [Deployment](#deployment)
 
 
-<a name="start-locally"></a>
-## locally setup configuration
+<a name="motivation"></a>
+## Motivation
+1. Architect relational database models in Python
+2. Utilize SQLAlchemy to conduct database queries
+3. Follow REST ful principles of API development
+4. Structure endpoints to respond to four HTTP methods, including error handling
+5. Enable Role Based Authentication and roles-based access control (RBAC) in a Flask application
+6. Application is hosted live on heroku
+
+
+
+
+
+<a name="local_setup"></a>
+## Local setup
 

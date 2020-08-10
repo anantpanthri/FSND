@@ -56,6 +56,53 @@ The below endpoint will create an actor in the database
     "created": 6,
     "success": true
 }`
+#### Update Actor
+The below endpoint will create an actor in the database
+
+##### End Point
+ `http://localhost:5000/actors/2`
+##### PATCH
+`
+        {
+            "age": 50,
+            "gender": "Male",
+            "name": "SRK"
+        }
+  `
+##### OUTPUT
+`{
+    "actor": [
+        {
+            "age": 50,
+            "gender": "Male",
+            "id": 2,
+            "name": "SRK"
+        }
+    ],
+    "success": true,
+    "updated": "SRK"
+}`
+
+#### delete Actor
+The below endpoint will create an actor in the database
+
+##### End Point
+ `http://localhost:5000/actors`
+##### POST
+`
+        {
+            "age": 30,
+            "gender": "Female",
+            "name": "Anjelina"
+        }
+  `
+##### OUTPUT
+`{
+    "created": 6,
+    "success": true
+}`
+
+
 #### Get Movies
 The below endpoint will query all the movies in the database
 
@@ -72,5 +119,21 @@ The below endpoint will query all the movies in the database
     ],
     "success": true
 }`
+#### Create Movies
+The below endpoint will create a movie in the database
 
+##### End Point
+ `http://localhost:5000/movies`
+##### POST
+`
+        {
+            "release_date": "Mon, 10 Aug 2020 00:00:00 GMT",
+            "title": "Hello brother!!!"
+        }
+  `
+##### OUTPUT
+`{
+    "created": "Hello brother!!!",
+    "success": true
+}`
 

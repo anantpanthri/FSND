@@ -42,7 +42,7 @@ def create_app(test_config=None):
     # ----------------------------------------------
 
     @app.route('/actors', methods=['GET'])
-    @requires_auth('read:actors')
+    @requires_auth('get:actors')
     def get_actors(payload):
         actor_query = Actor.query.all()
         paginated_actor = paginate_results(request, actor_query)
@@ -126,7 +126,7 @@ def create_app(test_config=None):
     # ----------------------------------------------
 
     @app.route('/movies', methods=['GET'])
-    @requires_auth('read:movies')
+    @requires_auth('get:movies')
     def get_movies(payload):
         movie_query = Movie.query.all()
         paginated_movies = paginate_results(request, movie_query)

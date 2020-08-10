@@ -39,6 +39,8 @@ The below endpoint will query all the actors in the database
     "success": true
 }`
 #### Create Actor
+The below endpoint will create an actor in the database
+
 ##### End Point
  `http://localhost:5000/actors`
 ##### POST
@@ -55,6 +57,7 @@ The below endpoint will query all the actors in the database
     "success": true
 }`
 #### Get Movies
+The below endpoint will query all the movies in the database
 
 ##### End Point
 `http://localhost:5000/movies`

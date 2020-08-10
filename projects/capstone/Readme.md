@@ -57,7 +57,7 @@ The below endpoint will create an actor in the database
     "success": true
 }`
 #### Update Actor
-The below endpoint will create an actor in the database
+The below endpoint will update an actor in the database
 
 ##### End Point
  `http://localhost:5000/actors/2`
@@ -84,21 +84,14 @@ The below endpoint will create an actor in the database
 }`
 
 #### delete Actor
-The below endpoint will create an actor in the database
+The below endpoint will delete an actor in the database
 
 ##### End Point
- `http://localhost:5000/actors`
-##### POST
-`
-        {
-            "age": 30,
-            "gender": "Female",
-            "name": "Anjelina"
-        }
-  `
+ `http://localhost:5000/actors/2`
+##### DELETE
 ##### OUTPUT
 `{
-    "created": 6,
+    "deleted": "2",
     "success": true
 }`
 

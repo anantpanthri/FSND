@@ -95,8 +95,8 @@ The below endpoint will delete an actor in the database
     "success": true
 }`
 
-
-#### Get Movies
+### Movies
+#### Get 
 The below endpoint will query all the movies in the database
 
 ##### End Point

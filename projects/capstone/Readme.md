@@ -22,4 +22,51 @@
 
 <a name="local_setup"></a>
 ## Local setup
+####Actors
+#####End Point
+ `http://localhost:5000/actors`
+####GET
+`{
+    "actors": [
+        {
+            "age": 29,
+            "gender": "Male",
+            "id": 1,
+            "name": "Anant"
+        }
+        ],
+    "success": true
+}`
+####Create Actor
+#####End Point
+ `http://localhost:5000/actors`
+#####POST
+`
+        {
+            "age": 30,
+            "gender": "Female",
+            "name": "Anjelina"
+        }
+  `
+#####OUTPUT
+`{
+    "created": 6,
+    "success": true
+}`
+####Get Movies
+
+#####End Point
+`http://localhost:5000/movies`
+#####Output
+`{
+    "movies": [
+        {
+            "id": 1,
+            "release_date": "Mon, 10 Aug 2020 00:00:00 GMT",
+            "title": "Steps to code"
+        }
+    ],
+    "success": true
+}`
+
 

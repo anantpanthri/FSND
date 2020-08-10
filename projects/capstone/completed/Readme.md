@@ -27,7 +27,8 @@ The below endpoint will query all the actors in the database
 ##### End Point
  `http://localhost:5000/actors`
 #### GET
-`{
+```
+{
     "actors": [
         {
             "age": 29,
@@ -37,40 +38,44 @@ The below endpoint will query all the actors in the database
         }
         ],
     "success": true
-}`
+}
+```
 #### Create Actor
 The below endpoint will create an actor in the database
 
 ##### End Point
  `http://localhost:5000/actors`
 ##### POST
-`
+```
         {
             "age": 30,
             "gender": "Female",
             "name": "Anjelina"
         }
-  `
+ ```
 ##### OUTPUT
-`{
+```
+{
     "created": 6,
     "success": true
-}`
+}
+```
 #### Update Actor
 The below endpoint will update an actor in the database
 
 ##### End Point
  `http://localhost:5000/actors/2`
 ##### PATCH
-`
+```
         {
             "age": 50,
             "gender": "Male",
             "name": "SRK"
         }
-  `
+  ```
 ##### OUTPUT
-`{
+```
+{
     "actor": [
         {
             "age": 50,
@@ -81,7 +86,8 @@ The below endpoint will update an actor in the database
     ],
     "success": true,
     "updated": "SRK"
-}`
+}
+```
 
 #### delete Actor
 The below endpoint will delete an actor in the database
@@ -90,10 +96,12 @@ The below endpoint will delete an actor in the database
  `http://localhost:5000/actors/2`
 ##### DELETE
 ##### OUTPUT
-`{
+```
+{
     "deleted": "2",
     "success": true
-}`
+}
+```
 
 ### [Movies]
 #### Get 
@@ -102,7 +110,8 @@ The below endpoint will query all the movies in the database
 ##### End Point
 `http://localhost:5000/movies`
 ##### Output
-`{
+```
+{
     "movies": [
         {
             "id": 1,
@@ -111,24 +120,27 @@ The below endpoint will query all the movies in the database
         }
     ],
     "success": true
-}`
+}
+```
 #### Create Movies
 The below endpoint will create a movie in the database
 
 ##### End Point
  `http://localhost:5000/movies`
 ##### POST
-`
+```
         {
             "release_date": "Mon, 10 Aug 2020 00:00:00 GMT",
             "title": "Hello brother!!!"
         }
-  `
+  ```
 ##### OUTPUT
-`{
+```
+{
     "created": "Hello brother!!!",
     "success": true
-}`
+}
+```
 #### Delete Movies
 The below endpoint will delete a movie in the database
 
@@ -136,10 +148,12 @@ The below endpoint will delete a movie in the database
  `http://localhost:5000/movies/7`
 ##### DELETE
 ##### OUTPUT
-`{
+```
+{
     "deleted": "7",
     "success": true
-}`
+}
+```
 
 #### Update Movies
 The below endpoint will update a movie in the database
@@ -147,14 +161,15 @@ The below endpoint will update a movie in the database
 ##### End Point
  `http://localhost:5000/movies/10`
 ##### PATCH
-`
+```
         {
             "release_date": "Mon, 10 Aug 2020 00:00:00 GMT",
             "title": "Stigma in society"
         }
-  `
+  ```
 ##### OUTPUT
-`{
+```
+{
     "edited": 10,
     "movie": [
         {
@@ -164,4 +179,5 @@ The below endpoint will update a movie in the database
         }
     ],
     "success": true
-}`
+}
+```

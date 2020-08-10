@@ -23,6 +23,7 @@
 <a name="local_setup"></a>
 ## Local setup
 #### Actors
+The below endpoint will query all the actors in the database
 ##### End Point
  `http://localhost:5000/actors`
 #### GET

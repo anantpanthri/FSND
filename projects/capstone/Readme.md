@@ -22,10 +22,10 @@
 
 <a name="local_setup"></a>
 ## Local setup
-## Actors
+#### Actors
 ##### End Point
  `http://localhost:5000/actors`
-####GET
+#### GET
 `{
     "actors": [
         {
@@ -37,10 +37,10 @@
         ],
     "success": true
 }`
-####Create Actor
-#####End Point
+#### Create Actor
+##### End Point
  `http://localhost:5000/actors`
-#####POST
+##### POST
 `
         {
             "age": 30,
@@ -48,16 +48,16 @@
             "name": "Anjelina"
         }
   `
-#####OUTPUT
+##### OUTPUT
 `{
     "created": 6,
     "success": true
 }`
-####Get Movies
+#### Get Movies
 
-#####End Point
+##### End Point
 `http://localhost:5000/movies`
-#####Output
+##### Output
 `{
     "movies": [
         {

@@ -22,7 +22,7 @@
 
 <a name="local_setup"></a>
 ## Local setup
-##Actors
+## Actors
 #####End Point
  `http://localhost:5000/actors`
 ####GET

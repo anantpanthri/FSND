@@ -10,7 +10,7 @@ database_path = "postgres://{}/{}".format('localhost:5432', database_name)
 db = SQLAlchemy()
 
 
-def db_init(app, database_path=database_path):
+def db_init(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
@@ -108,24 +108,60 @@ def delete(self):
 
 
 def db_init_rows():
-    new_actor = (Actor(
+    actor1 = (Actor(
         name='Anant',
         gender='Male',
-        age=29
+        age=29))
+
+    actor2 = (Actor(
+        name='SRK',
+        gender='Male',
+        age=55
+    ))
+    actor3 = (Actor(
+        name='TomCrusie',
+        gender='Male',
+        age=58
     ))
 
-    new_movie = (Movie(
+    movie1= (Movie(
         title='Steps to code',
         release_date=date.today()
     ))
+    movie2= (Movie(
+        title='My name is Khan',
+        release_date=date.today()
+    ))
+    movie3= (Movie(
+        title='MI-3',
+        release_date=date.today()
+    ))
 
-    movie_launch = Movie_Launch.insert().values(
-        Movie_id=new_movie.id,
-        Actor_id=new_actor.id,
-        movie_budget=100000
+    movie_launch1 = Movie_Launch.insert().values(
+       Movie_id=movie1.id,
+       Actor_id=actor1.id,
+       movie_budget=100000
     )
 
-    new_actor.insert()
-    new_movie.insert()
-    db.session.execute(movie_launch)
+    movie_launch2 = Movie_Launch.insert().values(
+       Movie_id=movie2.id,
+       Actor_id=actor2.id,
+       movie_budget=10000000
+    )
+
+    movie_launch3 = Movie_Launch.insert().values(
+       Movie_id=movie3.id,
+       Actor_id=actor3.id,
+       movie_budget=10000000000
+    )
+
+    actor1.insert()
+    actor2.insert()
+    actor3.insert()
+    movie1.insert()
+    movie2.insert()
+    movie3.insert()
+    db.session.execute(movie_launch1)
+    db.session.execute(movie_launch2)
+    db.session.execute(movie_launch3)
     db.session.commit()

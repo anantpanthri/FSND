@@ -12,7 +12,8 @@ def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
     db_init(app)
-    db_reboot()
+    # uncomment the first time
+    # db_reboot()
     CORS(app)
 
     @app.after_request
@@ -28,8 +29,6 @@ def create_app(test_config=None):
         movie_or_actor_rows = [movie_actor.format() for movie_actor in selection]
         return movie_or_actor_rows[start:end]
 
-
-
     @app.route('/health', methods=['GET'])
     def get_health():
         return jsonify({
@@ -44,7 +43,7 @@ def create_app(test_config=None):
     @app.route('/actors', methods=['GET'])
     @requires_auth('get:actors')
     def get_actors(payload):
-        actor_query = Actor.query.all()
+        actor_query = Actor.query.order_by(Actor.id).all()
         paginated_actor = paginate_results(request, actor_query)
 
         if len(paginated_actor) == 0:
@@ -94,7 +93,7 @@ def create_app(test_config=None):
         })
 
     @app.route('/actors/<actor_id>', methods=['PATCH'])
-    @requires_auth('edit:actors')
+    @requires_auth('update:actors')
     def update_actors(payload, actor_id):
         body = request.get_json()
         if not actor_id:
@@ -128,7 +127,7 @@ def create_app(test_config=None):
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
     def get_movies(payload):
-        movie_query = Movie.query.all()
+        movie_query = Movie.query.order_by(Movie.id).all()
         paginated_movies = paginate_results(request, movie_query)
         if len(paginated_movies) == 0:
             abort(404, {'message': 'Movies not found.'})
@@ -153,7 +152,7 @@ def create_app(test_config=None):
         movie.insert()
         return jsonify({
             'success': True,
-            'created': movie.name
+            'created': movie.title
         })
 
     @app.route('/movies/<movie_id>', methods=['DELETE'])
@@ -171,7 +170,7 @@ def create_app(test_config=None):
         })
 
     @app.route('/movies/<movie_id>', methods=['PATCH'])
-    @requires_auth('edit:movies')
+    @requires_auth('update:movies')
     def update_movies(payload, movie_id):
         body = request.get_json()
         if not movie_id or not body:

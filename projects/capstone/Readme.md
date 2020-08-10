@@ -129,4 +129,39 @@ The below endpoint will create a movie in the database
     "created": "Hello brother!!!",
     "success": true
 }`
+#### Delete Movies
+The below endpoint will delete a movie in the database
 
+##### End Point
+ `http://localhost:5000/movies/7`
+##### DELETE
+##### OUTPUT
+`{
+    "deleted": "7",
+    "success": true
+}`
+
+#### Update Movies
+The below endpoint will update a movie in the database
+
+##### End Point
+ `http://localhost:5000/movies/10`
+##### PATCH
+`
+        {
+            "release_date": "Mon, 10 Aug 2020 00:00:00 GMT",
+            "title": "Stigma in society"
+        }
+  `
+##### OUTPUT
+`{
+    "edited": 10,
+    "movie": [
+        {
+            "id": 10,
+            "release_date": "Mon, 10 Aug 2020 00:00:00 GMT",
+            "title": "Stigma in society"
+        }
+    ],
+    "success": true
+}`

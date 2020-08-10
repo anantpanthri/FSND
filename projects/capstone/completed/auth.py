@@ -7,7 +7,7 @@ import ssl
 
 AUTH0_DOMAIN = 'fsnd007.us.auth0.com'
 ALGORITHMS = ['RS256']
-API_AUDIENCE = 'casting_agency'
+API_AUDIENCE = 'view_movies_actors'
 ssl._create_default_https_context = ssl._create_unverified_context
 
 ## AuthError Exception

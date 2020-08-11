@@ -88,7 +88,9 @@ class Movie(db.Model):
             'release_date': self.release_date
         }
 
+
 '''CRUD OPERATIONS'''
+
 
 def insert(self):
     db.session.add(self)
@@ -124,35 +126,35 @@ def db_init_rows():
         age=58
     ))
 
-    movie1= (Movie(
+    movie1 = (Movie(
         title='Steps to code',
         release_date=date.today()
     ))
-    movie2= (Movie(
+    movie2 = (Movie(
         title='My name is Khan',
         release_date=date.today()
     ))
-    movie3= (Movie(
+    movie3 = (Movie(
         title='MI-3',
         release_date=date.today()
     ))
 
     movie_launch1 = Movie_Launch.insert().values(
-       Movie_id=movie1.id,
-       Actor_id=actor1.id,
-       movie_budget=100000
+        Movie_id=movie1.id,
+        Actor_id=actor1.id,
+        movie_budget=100000
     )
 
     movie_launch2 = Movie_Launch.insert().values(
-       Movie_id=movie2.id,
-       Actor_id=actor2.id,
-       movie_budget=10000000
+        Movie_id=movie2.id,
+        Actor_id=actor2.id,
+        movie_budget=10000000
     )
 
     movie_launch3 = Movie_Launch.insert().values(
-       Movie_id=movie3.id,
-       Actor_id=actor3.id,
-       movie_budget=10000000000
+        Movie_id=movie3.id,
+        Actor_id=actor3.id,
+        movie_budget=10000000000
     )
 
     actor1.insert()

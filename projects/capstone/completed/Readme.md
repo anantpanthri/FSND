@@ -127,7 +127,7 @@ The below endpoint will update an actor in the database
 }
 ```
 
-#### delete Actor
+#### Delete Actor
 The below endpoint will delete an actor in the database
 
 ##### End Point

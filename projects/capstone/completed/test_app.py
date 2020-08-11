@@ -253,7 +253,5 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'bad request')
 
 
-# Make the tests conveniently executable.
-# From app directory, run 'python test_app.py' to start tests
 if __name__ == "__main__":
     unittest.main()

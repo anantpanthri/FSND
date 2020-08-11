@@ -210,7 +210,7 @@ An error occurs if:
 3. the token is invalid or not provided
 4. the JWT doesn’t contain the proper action
 
-The tokens are
+The tokens w.r.t to role are
 ```
 tokens = {
 

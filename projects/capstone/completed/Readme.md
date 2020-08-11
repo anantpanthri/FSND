@@ -22,6 +22,20 @@
 
 <a name="local_setup"></a>
 ## Local setup
+To start locally checkout the file named requirements.txt
+`$ pip install -r requirements.txt`
+To execute test go to capstone/completed
+```
+completed % python test_app.py
+/Users/anantpanthri/PycharmProjects/FSND/projects/capstone/venv/lib/python3.8/site-packages/jose/backends/cryptography_backend.py:187: CryptographyDeprecationWarning: signer and verifier have been deprecated. Please use sign and verify instead.
+  verifier = self.prepared_key.verifier(
+....................
+----------------------------------------------------------------------
+Ran 20 tests in 23.261s
+
+OK
+
+```
 ### [Actors]
 The below endpoint will query all the actors in the database
 ##### End Point

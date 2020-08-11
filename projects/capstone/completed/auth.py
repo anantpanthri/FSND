@@ -1,13 +1,13 @@
 import json
-from flask import request, _request_ctx_stack
-from functools import wraps
-from jose import jwt
-from urllib.request import urlopen
 import ssl
+from functools import wraps
+from urllib.request import urlopen
 
-AUTH0_DOMAIN = 'fsnd007.us.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'view_movies_actors'
+from flask import request
+from jose import jwt
+
+from config import AUTH0_DOMAIN, ALGORITHMS, API_AUDIENCE
+
 ssl._create_default_https_context = ssl._create_unverified_context
 
 ## AuthError Exception

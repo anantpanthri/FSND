@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from auth import requires_auth
+from auth import AuthError, requires_auth
 from models import db_init, db_reboot, Actor, Movie
 
 PAGES = 10
@@ -14,7 +14,7 @@ def create_app(test_config=None):
     db_init(app)
     # uncomment the first time
     # db_reboot()
-    CORS(app)
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     @app.after_request
     def after_request(response):
@@ -208,6 +208,14 @@ def create_app(test_config=None):
             "message": "resource not found"
         }), 404
 
+    @app.errorhandler(403)
+    def ressource_not_found(error):
+        return jsonify({
+            "success": False,
+            "error": 403,
+            "message": "permissions denied"
+        }), 403
+
     @app.errorhandler(405)
     def method_not_allowed(error):
         return jsonify({
@@ -232,8 +240,15 @@ def create_app(test_config=None):
             "message": "internal server error"
         }), 500
 
-    return app
+    @app.errorhandler(AuthError)
+    def authentication_failure(AuthError):
+        return jsonify({
+            "success": False,
+            "error": AuthError.status_code,
+            "message": "authentication failed"
+        }), 401
 
+    return app
 
 app = create_app()
 

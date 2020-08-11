@@ -20,7 +20,7 @@
 <a name="local_setup"></a>
 ## Local setup
 1. To start locally checkout the file named requirements.txt
-`$ pip install -r requirements.txt.`
+`$ pip install -r requirements.txt`
 2. To execute test go to capstone/completed
 ```
 completed % python test_app.py

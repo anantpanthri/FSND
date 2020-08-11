@@ -235,7 +235,7 @@ tokens = {
     "casting_director": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJNMTZNRzE4WFRaVjgxa3U0T0x2dyJ9.eyJpc3MiOiJodHRwczovL2ZzbmQwMDcudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVmMjhiNzJmNWM4NDhmMDAzN2M0NWNjMiIsImF1ZCI6InZpZXdfbW92aWVzX2FjdG9ycyIsImlhdCI6MTU5NzA4MTc3OCwiZXhwIjoxNTk3MTY4MTc2LCJhenAiOiJwY2p0aDhCOUcxNlJGc25oUDg5bUJMbEx4d3VKTDJEUiIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiY3JlYXRlOmFjdG9ycyIsImRlbGV0ZTphY3RvcnMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.wCQ6hKl2XgxFFr_YaTqj6GWPGStag2JVnf58RPEgOCP6efjoGSelM31dwVBO_YDmrfBEBPbSY7sLfOWD7YQQDB3Ph9b0jcTobtRXyqaWGMYYZ2ZGXm_IviagkRdAtYm_EsDSYEpOUMC7oM-Vxt6gAdTh9g4xkqqZg5rMvB9QE8ypQhukyywoEwcechZLyeo0uDZZJiG1Favr6JYc4A8rx7vzxgMxNfRAn2AvkFcfaK22YE-9Tsvwt5KkVoNrDYO2NWNZE5ppylfPNCZrqZJUCB1LsrCjI0WJ_g2kVSTYoOZ-AAoURJ_8pCko3GgPcGf5C4FPWMSx4YNqOQ1gnWUrKQ "
 }
 ```
-###Example of getting tokens
+### Example of getting tokens
 ```
 https://{{YOUR_DOMAIN}}/authorize?audience={{API_IDENTIFIER}}&response_type=token&client_id={{YOUR_CLIENT_ID}}&redirect_uri={{YOUR_CALLBACK_URI}}
 ```
@@ -246,7 +246,7 @@ https://fsnd007.us.auth0.com/authorize?audience=view_movies_actors&response_type
 
 ```
 
-###Permissions
+### Permissions
 ```
 Casting Assistant
     Can view actors and movies

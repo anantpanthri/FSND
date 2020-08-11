@@ -17,13 +17,10 @@
 6. Application is hosted live on heroku
 
 
-
-
-
 <a name="local_setup"></a>
 ## Local setup
 To start locally checkout the file named requirements.txt
-`$ pip install -r requirements.txt`
+`$ pip install -r requirements.txt.`
 To execute test go to capstone/completed
 ```
 completed % python test_app.py

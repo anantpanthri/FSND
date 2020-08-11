@@ -33,6 +33,15 @@ Ran 20 tests in 23.261s
 OK
 
 ```
+3. To setup Auth0 for authentication and authorization
+go to config.py that also contains the bearer token 
+
+```
+AUTH0_DOMAIN = 'fsnd007.us.auth0.com'
+ALGORITHMS = ['RS256']
+API_AUDIENCE = 'view_movies_actors'
+```
+
 ### [Actors]
 The below endpoint will query all the actors in the database
 ##### End Point

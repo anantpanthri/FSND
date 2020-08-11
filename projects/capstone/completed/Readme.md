@@ -248,13 +248,13 @@ https://fsnd007.us.auth0.com/authorize?audience=view_movies_actors&response_type
 
 ### Permissions
 ```
-Casting Assistant
-    Can view actors and movies
-Casting Director
-    All permissions a Casting Assistant has and…
-    Add or delete an actor from the database
-    Modify actors or movies
-Executive Producer
-    All permissions a Casting Director has and…
-    Add or delete a movie from the database
+1. Casting Assistant
+    - Can view actors and movies
+2. Casting Director
+    - All permissions a Casting Assistant has and…
+    - Add or delete an actor from the database
+    - Modify actors or movies
+3. Executive Producer
+    - All permissions a Casting Director has and…
+    - Add or delete a movie from the database
 ```

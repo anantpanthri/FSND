@@ -2,7 +2,7 @@
 
 1. [Motivation](#motivation)
 2. [Local Setup](#local_setup)
-3. [API endpoints](#api)
+3. [API endpoints](#api_endpoints)
 4. [Authentification](#authentification)
 5. [Deployment](#deployment)
 
@@ -41,7 +41,8 @@ AUTH0_DOMAIN = 'fsnd007.us.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'view_movies_actors'
 ```
-
+<a name="api_endpoints"></a>
+## API Endpoints
 ### [Actors]
 The below endpoint will query all the actors in the database
 ##### End Point
